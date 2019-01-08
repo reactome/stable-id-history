@@ -16,10 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 
 public class StableIdHistory {
@@ -84,6 +81,17 @@ public class StableIdHistory {
             for (GKInstance instance : getInstances(releaseDBA, Arrays.asList(ReactomeJavaConstants.Event,
                     ReactomeJavaConstants.PhysicalEntity, ReactomeJavaConstants.Regulation))) {
                 //TODO Extract the relevant instance information and store it in the new stable id history database
+                long instanceDbId = instance.getDBID();
+                String instanceDisplayName = instance.getDisplayName();
+                String instanceClass = instance.getSchemClass().getName();
+                String instanceType; // Electronic vs manual
+                Optional<GKInstance> stableIdentifierInstance = getStableIdentifierInstance(instance);
+                stableIdentifierInstance.ifPresent(stableIdInstance -> {
+                    String stableIdentifier = getStableIdentifier(stableIdInstance);
+                    int stableIdentifierVersion = getStableIdentifierVersion(stableIdInstance);
+                    String oldStableId;
+                });
+
             }
         }
     }
@@ -131,15 +139,40 @@ public class StableIdHistory {
         return instances;
     }
 
-    private static String getStableIdentifier(GKInstance instance) {
-        String stableIdentifier = "";
-
+    private static Optional<GKInstance> getStableIdentifierInstance(GKInstance instance) {
+        GKInstance stableIdentifierInstance = null;
         try {
-            stableIdentifier = (String) instance.getAttributeValue(ReactomeJavaConstants.stableIdentifier);
+            stableIdentifierInstance = (GKInstance) instance.getAttributeValue(ReactomeJavaConstants.stableIdentifier);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return stableIdentifier;
+        if (stableIdentifierInstance == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(stableIdentifierInstance);
+    }
+
+    private static String getStableIdentifier(GKInstance stableIdentifierInstance) {
+        try {
+            return (String) stableIdentifierInstance.getAttributeValue(ReactomeJavaConstants.identifier);
+        } catch (Exception e) {
+            throw new IllegalStateException("Stable identifier instance " +
+                stableIdentifierInstance.getExtendedDisplayName() + " in db " +
+                ((MySQLAdaptor) stableIdentifierInstance.getDbAdaptor()).getDBName() + " has no identifier", e);
+        }
+    }
+
+    private static int getStableIdentifierVersion(GKInstance stableIdentifierInstance) {
+        try {
+            return Integer.parseInt(
+                (String) stableIdentifierInstance.getAttributeValue(ReactomeJavaConstants.identifierVersion)
+            );
+        } catch (Exception e) {
+            throw new IllegalStateException("Stable identifier instance " +
+                stableIdentifierInstance.getExtendedDisplayName() + " in db " +
+                ((MySQLAdaptor) stableIdentifierInstance.getDbAdaptor()).getDBName() + " has no identifier version", e);
+        }
     }
 }
