@@ -1,15 +1,13 @@
 package org.reactome.release;
 
+import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gk.model.GKInstance;
 import org.gk.model.ReactomeJavaConstants;
 import org.gk.persistence.MySQLAdaptor;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Connection;
@@ -63,7 +61,10 @@ public class StableIdHistory {
                 DriverManager.getConnection("jdbc:mysql://localhost/?user=" + user + "&password=" + password);
             Statement stm = connection.createStatement();
             stm.executeUpdate("CREATE DATABASE StableIdentifierHistory");
-        } catch (SQLException e) {
+            stm.executeUpdate("USE StableIdentifierHistory");
+            ScriptRunner runner = new ScriptRunner(connection);
+            runner.runScript(new BufferedReader(new FileReader("src/main/resources/stable_id_history.sql")));
+        } catch (SQLException | FileNotFoundException e) {
             logger.error("Unable to create StableIdentifierHistory database", e);
             System.exit(1);
         }
