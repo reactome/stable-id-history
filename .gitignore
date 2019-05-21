@@ -28,3 +28,6 @@ hs_err_pid*
 
 stableIdHistory/src/main/resources/config\.properties
 stableIdHistory/target/
+
+*.json
+*.err
