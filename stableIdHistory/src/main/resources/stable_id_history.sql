@@ -1,5 +1,5 @@
 CREATE TABLE StableIdentifier (
-    entryId INT(32) PRIMARY KEY,
+    entryId INT(32) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     stableId VARCHAR(255) NOT NULL,
     stableIdVersion INT(32) NOT NULL,
     oldStableId VARCHAR(255),
