@@ -45,4 +45,8 @@ public class ReactomeVersion {
 
 		this.ownedInstances.add(ownedInstance);
 	}
+
+	public int getReleaseNumber() {
+		return releaseNumber;
+	}
 }
