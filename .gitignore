@@ -24,10 +24,11 @@ hs_err_pid*
 
 # IntelliJ Project Files
 \.idea/
+*.iml
 
-
-stableIdHistory/src/main/resources/config\.properties
-stableIdHistory/target/
+# Stable Id History Project Files
+src/main/resources/config\.properties
+target/
 
 *.json
 *.err
