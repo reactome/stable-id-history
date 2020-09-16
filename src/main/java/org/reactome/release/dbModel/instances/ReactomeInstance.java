@@ -1,8 +1,11 @@
-package org.reactome.release.dbModel;
+package org.reactome.release.dbModel.instances;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.Relationship;
+import org.reactome.release.deprecated.ReactomeVersion;
+import org.reactome.release.deprecated.StableId;
 
 import java.util.*;
 
@@ -10,13 +13,17 @@ import java.util.*;
 // Pathway, RLE, PE, Regulation, and their
 // subclasses.  Must use a hierarchy to have
 // multiple labels for nodes
+
 public class ReactomeInstance {
 	@Id @GeneratedValue
 	public Long id;
 
 	private long dbId;
 	private String displayName;
+
+	@Labels
 	private String schemaClass;
+
 	private String type;
 	private Set<String> species;
 
