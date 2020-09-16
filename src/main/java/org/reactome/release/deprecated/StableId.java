@@ -1,8 +1,9 @@
-package org.reactome.release.dbModel;
+package org.reactome.release.deprecated;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Relationship;
+import org.reactome.release.dbModel.instances.ReactomeInstance;
 
 import java.util.*;
 

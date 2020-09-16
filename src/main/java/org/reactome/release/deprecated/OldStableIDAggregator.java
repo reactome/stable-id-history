@@ -1,4 +1,4 @@
-package org.reactome.release;
+package org.reactome.release.deprecated;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.gk.model.GKInstance;
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.reactome.release.deprecated.InstanceUtils;
 
 import static org.gk.model.ReactomeJavaConstants.Event;
 import static org.gk.model.ReactomeJavaConstants.PhysicalEntity;

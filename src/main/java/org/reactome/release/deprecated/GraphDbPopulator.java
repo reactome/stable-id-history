@@ -1,4 +1,4 @@
-package org.reactome.release;
+package org.reactome.release.deprecated;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -7,10 +7,7 @@ import org.json.simple.parser.ParseException;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
-import org.neo4j.ogm.transaction.Transaction;
-import org.reactome.release.dbModel.ReactomeInstance;
-import org.reactome.release.dbModel.ReactomeVersion;
-import org.reactome.release.dbModel.StableId;
+import org.reactome.release.dbModel.instances.ReactomeInstance;
 
 import java.io.FileReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.reactome.release;
+package org.reactome.release.deprecated;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import org.reactome.release.deprecated.InstanceUtils;
 
 public class StableIdHistory {
 	private static final Logger logger = LogManager.getLogger();

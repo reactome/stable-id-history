@@ -1,4 +1,4 @@
-package org.reactome.release;
+package org.reactome.release.deprecated;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,6 @@ import org.gk.persistence.MySQLAdaptor;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class InstanceUtils {
 	private static final Logger logger = LogManager.getLogger();

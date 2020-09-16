@@ -1,6 +1,7 @@
-package org.reactome.release.dbModel;
+package org.reactome.release.deprecated;
 
 import org.neo4j.ogm.annotation.*;
+import org.reactome.release.dbModel.instances.ReactomeInstance;
 
 import java.util.HashSet;
 import java.util.Set;
