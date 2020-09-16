@@ -32,3 +32,7 @@ target/
 
 *.json
 *.err
+
+src/main/resources/prettyStableIdJson
+src/main/resources/rawStableIdJson
+src/main/resources/stableIdJson2
