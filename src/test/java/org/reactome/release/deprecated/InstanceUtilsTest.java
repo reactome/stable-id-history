@@ -1,4 +1,4 @@
-package org.reactome.release;
+package org.reactome.release.deprecated;
 
 import org.gk.model.GKInstance;
 import org.gk.persistence.MySQLAdaptor;
@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.reactome.release.deprecated.InstanceUtils;
 
 import static org.junit.Assert.assertEquals;
 
