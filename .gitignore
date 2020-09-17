@@ -36,3 +36,6 @@ target/
 src/main/resources/prettyStableIdJson
 src/main/resources/rawStableIdJson
 src/main/resources/stableIdJson2
+
+src/test/resources/stableIdJson
+src/test/resources/stableIdTestCases.txt
