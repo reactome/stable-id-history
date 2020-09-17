@@ -1,0 +1,10 @@
+{
+  "oldStableId":"REACT_111642 (Q9UIQ6)",
+  "instanceID":1236834,
+  "reactomeClass":"EntityWithAccessionedSequence",
+  "instanceType":"manual",
+  "stableId":"R-HSA-1236834",
+  "stableIdVersion":1,
+  "instanceSpecies":["Homo sapiens"],
+  "displayName":"LNPEP [early endosome lumen]"
+}
